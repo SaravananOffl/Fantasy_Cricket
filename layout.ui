@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>MainWindow</class>
+    <widget class="QMainWindow" name="MainWindow">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>706</width>
+                <height>566</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>MainWindow</string>
+        </property>
+        <property name="styleSheet">
+            <string notr="true">background-color: rgb(239, 83, 80);
+                background-color: rgb(41, 182, 246);
+            </string>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <widget class="QLabel" name="label">
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>20</y>
+                        <width>161</width>
+                        <height>16</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <italic>true</italic>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                    <string>Your Selections :</string>
+                </property>
+            </widget>
+            <widget class="QColumnView" name="columnView">
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>50</y>
+                        <width>661</width>
+                        <height>41</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">background-color: rgb(63, 81, 181);</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="label_2">
+                <property name="geometry">
+                    <rect>
+                        <x>40</x>
+                        <y>60</y>
+                        <width>112</width>
+                        <height>18</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>Batsmen(BAT)</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="label_3">
+                <property name="geometry">
+                    <rect>
+                        <x>190</x>
+                        <y>60</y>
+                        <width>113</width>
+                        <height>18</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>Bowlers(BOW)</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="label_5">
+                <property name="geometry">
+                    <rect>
+                        <x>490</x>
+                        <y>60</y>
+                        <width>150</width>
+                        <height>18</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>Wicket-Keeper(WK)</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="label_4">
+                <property name="geometry">
+                    <rect>
+                        <x>330</x>
+                        <y>60</y>
+                        <width>123</width>
+                        <height>18</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>Allrounders (AR)</string>
+                </property>
+            </widget>
+            <widget class="QListView" name="db_list">
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>150</y>
+                        <width>281</width>
+                        <height>361</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">border-color: rgb(191, 54, 12);
+                        background-color: rgb(63, 81, 181);
+                        border-top-color: rgb(255, 255, 255);
+                    </string>
+                </property>
+            </widget>
+            <widget class="QListView" name="listView_2">
+                <property name="geometry">
+                    <rect>
+                        <x>400</x>
+                        <y>150</y>
+                        <width>281</width>
+                        <height>361</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="move_btn">
+                <property name="geometry">
+                    <rect>
+                        <x>310</x>
+                        <y>300</y>
+                        <width>80</width>
+                        <height>23</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(26, 35, 126);
+                        border-color: rgb(255, 255, 255);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>&gt;</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="label_6">
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>130</y>
+                        <width>151</width>
+                        <height>16</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <italic>true</italic>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                    <string>PoInts Available :</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="label_7">
+                <property name="geometry">
+                    <rect>
+                        <x>400</x>
+                        <y>130</y>
+                        <width>111</width>
+                        <height>16</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <italic>true</italic>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                    <string>Points Used :</string>
+                </property>
+            </widget>
+            <widget class="QRadioButton" name="bow_radio">
+                <property name="geometry">
+                    <rect>
+                        <x>102</x>
+                        <y>158</y>
+                        <width>59</width>
+                        <height>24</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>BOW</string>
+                </property>
+            </widget>
+            <widget class="QRadioButton" name="ar_radio">
+                <property name="geometry">
+                    <rect>
+                        <x>167</x>
+                        <y>158</y>
+                        <width>46</width>
+                        <height>24</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>AR</string>
+                </property>
+            </widget>
+            <widget class="QRadioButton" name="wk_radio">
+                <property name="geometry">
+                    <rect>
+                        <x>219</x>
+                        <y>158</y>
+                        <width>51</width>
+                        <height>24</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>WK</string>
+                </property>
+            </widget>
+            <widget class="QListView" name="listView_3">
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>190</y>
+                        <width>281</width>
+                        <height>321</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">background-color: rgb(255, 255, 255);</string>
+                </property>
+            </widget>
+            <widget class="QListView" name="team_list">
+                <property name="geometry">
+                    <rect>
+                        <x>400</x>
+                        <y>190</y>
+                        <width>281</width>
+                        <height>321</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">border-color: rgb(85, 255, 127);
+                        background-color: rgb(255, 255, 255);
+                    </string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="label_8">
+                <property name="geometry">
+                    <rect>
+                        <x>411</x>
+                        <y>161</y>
+                        <width>113</width>
+                        <height>18</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>TEAM NAME :</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="no_bat">
+                <property name="geometry">
+                    <rect>
+                        <x>160</x>
+                        <y>60</y>
+                        <width>16</width>
+                        <height>18</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255)
+                        ;background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>0</string>
+                </property>
+            </widget>
+            <widget class="QRadioButton" name="bat_radio">
+                <property name="geometry">
+                    <rect>
+                        <x>41</x>
+                        <y>158</y>
+                        <width>55</width>
+                        <height>24</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="cursor">
+                    <cursorShape>ArrowCursor</cursorShape>
+                </property>
+                <property name="acceptDrops">
+                    <bool>false</bool>
+                </property>
+                <property name="toolTipDuration">
+                    <number>-3</number>
+                </property>
+                <property name="autoFillBackground">
+                    <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>BAT</string>
+                </property>
+                <property name="checkable">
+                    <bool>true</bool>
+                </property>
+                <property name="checked">
+                    <bool>false</bool>
+                </property>
+            </widget>
+            <widget class="QLabel" name="no_ar">
+                <property name="geometry">
+                    <rect>
+                        <x>460</x>
+                        <y>60</y>
+                        <width>16</width>
+                        <height>18</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>0</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="no_bow">
+                <property name="geometry">
+                    <rect>
+                        <x>310</x>
+                        <y>60</y>
+                        <width>16</width>
+                        <height>18</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>0</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="no_wk">
+                <property name="geometry">
+                    <rect>
+                        <x>640</x>
+                        <y>60</y>
+                        <width>16</width>
+                        <height>18</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>0</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="team_name">
+                <property name="geometry">
+                    <rect>
+                        <x>530</x>
+                        <y>161</y>
+                        <width>50</width>
+                        <height>18</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(63, 81, 181);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>NAME</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="points_used">
+                <property name="geometry">
+                    <rect>
+                        <x>520</x>
+                        <y>130</y>
+                        <width>121</width>
+                        <height>16</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <italic>true</italic>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                    <string>0</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="points_available">
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>130</y>
+                        <width>151</width>
+                        <height>16</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <italic>true</italic>
+                        <bold>true</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                    <string>0</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QMenuBar" name="menubar">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>706</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="styleSheet">
+                <string notr="true">background-color: rgb(66,66,66);
+                    color: rgb(255, 255, 255);
+                </string>
+            </property>
+            <widget class="QMenu" name="menuManage_Teams">
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        background-color: rgb(66,66,66);
+                    </string>
+                </property>
+                <property name="title">
+                    <string>Manage Teams</string>
+                </property>
+                <addaction name="actionNEW_team"/>
+                <addaction name="actionOPEN_Team"/>
+                <addaction name="actionSAVE_Team"/>
+                <addaction name="actionEvaluate_Team"/>
+            </widget>
+            <addaction name="menuManage_Teams"/>
+        </widget>
+        <widget class="QStatusBar" name="statusbar"/>
+        <action name="actionNEW_team">
+            <property name="text">
+                <string>NEW Team</string>
+            </property>
+            <property name="visible">
+                <bool>true</bool>
+            </property>
+            <property name="menuRole">
+                <enum>QAction::TextHeuristicRole</enum>
+            </property>
+        </action>
+        <action name="actionOPEN_Team">
+            <property name="text">
+                <string>OPEN Team</string>
+            </property>
+        </action>
+        <action name="actionSAVE_Team">
+            <property name="text">
+                <string>SAVE Team</string>
+            </property>
+        </action>
+        <action name="actionEvaluate_Team">
+            <property name="text">
+                <string>EVALUATE Team</string>
+            </property>
+        </action>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>

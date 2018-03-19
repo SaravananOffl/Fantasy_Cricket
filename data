@@ -1,0 +1,21 @@
+import sqlite3
+
+con = sqlite3.connect('cricketers.db')
+
+c = con.cursor()
+
+# c.execute("""CREATE TABLE employee(first text,
+#     last text,
+#     pay integer
+
+#
+# )""")
+
+c.execute("INSERT INTO employee VALUES('Sa','G',700000)")
+con.commit()
+c.execute("SELECT * FROM employee WHERE last ='G' ")
+L = c.fetchall()
+print(L)
+
+con.commit()
+con.close()
