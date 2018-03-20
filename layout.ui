@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>951</width>
-    <height>707</height>
+    <height>808</height>
    </rect>
   </property>
   <property name="font">
@@ -531,7 +531,7 @@
      <rect>
       <x>720</x>
       <y>151</y>
-      <width>50</width>
+      <width>141</width>
       <height>18</height>
      </rect>
     </property>
@@ -763,6 +763,9 @@ border-bottom-color: rgb(255, 255, 255);</string>
   <action name="actionNEW_team">
    <property name="text">
     <string>NEW Team</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
    </property>
    <property name="visible">
     <bool>true</bool>
