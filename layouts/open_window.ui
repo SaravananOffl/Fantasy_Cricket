@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>saved_windows</class>
+ <widget class="QMainWindow" name="saved_windows">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -40,30 +40,6 @@
      <string>SAVED TEAMS</string>
     </property>
    </widget>
-   <widget class="QListView" name="saved_teams_list">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>256</width>
-      <height>361</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color : white</string>
-    </property>
-    <property name="editTriggers">
-     <set>QAbstractItemView::EditKeyPressed</set>
-    </property>
-    <property name="alternatingRowColors">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QPushButton" name="open_button">
     <property name="geometry">
      <rect>
@@ -78,6 +54,19 @@
     </property>
     <property name="text">
      <string>OPEN</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="saved_windows_table">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>256</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
    </widget>
   </widget>

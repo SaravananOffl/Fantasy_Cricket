@@ -6,20 +6,22 @@
 #
 # WARNING! All changes made in this file will be lost!
 import  sys
-
+import evaluate_teams
+import saved_teams1
 from gevent.libev.corecext import SIGNAL
-
+import  databaseclass
 import team_menu
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QDir
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QInputDialog, QLineEdit, QWizardPage, QLabel, \
     QGridLayout, QMessageBox, QPlainTextEdit
+import team_saved_dialog
 
 import sqlite3
 
 
 class Ui_MainWindow(object):
-
+    DATA_OBJ = databaseclass.databasefunc()
     TABLE_NAME = None
     def __init__(self):
         super().__init__()
@@ -368,8 +370,11 @@ class Ui_MainWindow(object):
         self.actionNEW_team.setObjectName("actionNEW_team")
         self.actionOPEN_Team = QtWidgets.QAction(MainWindow)
         self.actionOPEN_Team.setObjectName("actionOPEN_Team")
+        self.actionOPEN_Team.setShortcut('Ctrl+O')
+        self.actionOPEN_Team.triggered.connect(self.savedcall)
         self.actionSAVE_Team = QtWidgets.QAction(MainWindow)
         self.actionSAVE_Team.setObjectName("actionSAVE_Team")
+        self.actionSAVE_Team.triggered.connect(self.team_saved)
         self.actionEvaluate_Team = QtWidgets.QAction(MainWindow)
         self.actionEvaluate_Team.setObjectName("actionEvaluate_Team")
         self.menuManage_Teams.addAction(self.actionNEW_team)
@@ -377,6 +382,8 @@ class Ui_MainWindow(object):
         self.actionNEW_team.triggered.connect(self.opencall)
         self.menuManage_Teams.addAction(self.actionOPEN_Team)
         self.menuManage_Teams.addAction(self.actionSAVE_Team)
+        self.actionSAVE_Team.setShortcut('Ctrl+S')
+        self.actionEvaluate_Team.setShortcut('Ctrl+E')
         self.menuManage_Teams.addAction(self.actionEvaluate_Team)
         self.menubar.addAction(self.menuManage_Teams.menuAction())
 
@@ -418,40 +425,14 @@ class Ui_MainWindow(object):
         self.actionOPEN_Team.setText(_translate("MainWindow", "OPEN Team"))
         self.actionSAVE_Team.setText(_translate("MainWindow", "SAVE Team"))
         self.actionEvaluate_Team.setText(_translate("MainWindow", "EVALUATE Team"))
+        self.actionEvaluate_Team.triggered.connect(self.evaluate_teamss)
         self.tableWidget.clicked.connect(self.update_list)
         self.team_list.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
     # START FROM HERE
     def create_new_table(self,team_name):
-        connec = sqlite3.connect('cricket')
-        query = """ CREATE TABLE IF NOT EXISTS %s (
-	`Player`	TEXT NOT NULL,
-	`Scored`	INTEGER,
-	`Faced`	INTEGER,
-	`fours`	INTEGER,
-	`sixes`	INTEGER,
-	`bowled`	INTEGER,
-	`maiden`	INTEGER,
-	`given`	INTEGER,
-	`wkts`	INTEGER,
-	`catches`	INTEGER,
-	`stumping`	INTEGER,
-	`ro`	INTEGER,
-	`value`	INTEGER,
-	`matches`	INTEGER,
-	`runs`	INTEGER,
-	`100s`	INTEGER,
-	`50s`	INTEGER,
-	`ctg`	TEXT NOT NULL,
-	PRIMARY KEY(`Player`)
-)""" %(team_name)
-        print(query)
-        result = connec.execute(query)
-        connec.commit()
-
-        print(result)
-        connec.close()
+        self.DATA_OBJ.create_team(team_name)
         self.team_name.setText(team_name)
-        self.load_data()
+        self.bat_radio.toggle()
         self.window.close()
 
     def clicked(self):  # for
@@ -465,6 +446,33 @@ class Ui_MainWindow(object):
         self.window.show()
         self.ui.pushButton.clicked.connect(self.clicked)
 
+    def savedcall(self):
+        self.saved_windows = QtWidgets.QMainWindow()
+        self.ui = saved_teams1.Ui_saved_windows()
+        self.ui.setupUi(self.saved_windows)
+        self.saved_windows.show()
+        self.savedTeams()
+        # self.ui.open_button.clicked.connect(self.)
+    def savedTeams(self):
+       result = self.DATA_OBJ.list_all_tables()
+       self.tableWidget.setRowCount(0)
+       for row_no, row_data in enumerate(result):
+           print(row_no, row_data)
+           self.ui.saved_windows_table.insertRow(row_no)
+           self.ui.saved_windows_table.setItem(row_no, 0, QtWidgets.QTableWidgetItem('{0}' .format(result)))
+    def evaluate_teamss(self):
+        self.evaluate_window = QtWidgets.QMainWindow()
+        self.ui = evaluate_teams.Ui_evaluate_window()
+        self.ui.setupUi(self.evaluate_window)
+        self.evaluate_window.show()
+    def team_saved(self):
+        self.team_saved_dialoge = QtWidgets.QMainWindow()
+        self.ui = team_saved_dialog.Ui_team_saved_dialog()
+        self.ui.setupUi(self.team_saved_dialoge)
+        self.team_saved_dialoge.show()
+        self.ui.team_save_dialog_btn.clicked.connect(self.close_save)
+    def close_save(self):
+        self.team_saved_dialoge.close()
     def update_list(self): #table clicks handling
         player_selected = self.tableWidget.currentItem().text()
         row_id = self.tableWidget.currentItem().row()
@@ -508,52 +516,27 @@ class Ui_MainWindow(object):
         connection.close()
 
     def bat_btn_clicked(self):
-        query = "SELECT player FROM cricketers where ctg= 'BAT' "
-        connection = sqlite3.connect('cricket')
-        result = connection.execute(query)
-        print(result)
+        result = self.DATA_OBJ.bat_btn("BAT")
+        self.display(result)
+
+    def display(self,result):
         self.tableWidget.setRowCount(0)
         for row_no, row_data in enumerate(result):
             print(row_no, row_data)
             self.tableWidget.insertRow(row_no)
             self.tableWidget.setItem(row_no, 0, QtWidgets.QTableWidgetItem('%s' % (row_data)))
-        connection.close()
 
     def bow_btn_clicked(self):
-        query = "SELECT player FROM cricketers where ctg= 'BWL' "
-        connection = sqlite3.connect('cricket')
-        result = connection.execute(query)
-        print(result)
-        self.tableWidget.setRowCount(0)
-        for row_no, row_data in enumerate(result):
-            print(row_no, row_data)
-            self.tableWidget.insertRow(row_no)
-            self.tableWidget.setItem(row_no, 0, QtWidgets.QTableWidgetItem('%s' % (row_data)))
-        connection.close()
+        result = self.DATA_OBJ.bat_btn("BWL")
+        self.display(result)
 
     def wk_btn_clicked(self):
-        query = "SELECT player FROM cricketers where ctg = 'WK' "
-        connection = sqlite3.connect('cricket')
-        result = connection.execute(query)
-        print(result)
-        self.tableWidget.setRowCount(0)
-        for row_no, row_data in enumerate(result):
-            print(row_no, row_data)
-            self.tableWidget.insertRow(row_no)
-            self.tableWidget.setItem(row_no, 0, QtWidgets.QTableWidgetItem('%s' % (row_data)))
-        connection.close()
+        result = self.DATA_OBJ.bat_btn("WK")
+        self.display(result)
 
     def ar_btn_clicked(self):
-        query = "SELECT player FROM cricketers where ctg = 'AR' "
-        connection = sqlite3.connect('cricket')
-        result = connection.execute(query)
-        print(result)
-        self.tableWidget.setRowCount(0)
-        for row_no, row_data in enumerate(result):
-            print(row_no, row_data)
-            self.tableWidget.insertRow(row_no)
-            self.tableWidget.setItem(row_no, 0, QtWidgets.QTableWidgetItem('%s' % (row_data)))
-        connection.close()
+        result = self.DATA_OBJ.bat_btn("AR")
+        self.display(result)
 
 
 if __name__ == "__main__":
